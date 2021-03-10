@@ -33,7 +33,7 @@ namespace GRDL
             return _context.Records.AsNoTracking().FirstOrDefault(record => record.ID == RecID);
         }
      //Order & order products methods
-        void IGRRepo.AddOrder(Order order)
+        void IGRRepo.AddOrder(Order order) //In web dev, we shuld have these return the object type
         {
             throw new NotImplementedException();
         }
