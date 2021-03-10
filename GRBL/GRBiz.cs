@@ -3,29 +3,21 @@ using System.Collections.Generic;
 using GRDL;
 namespace GRBL
 {
-    public class GRBiz : I_GRBiz
+    public class GRBiz : IGRBiz
     {
-        private I_GRDL _repo;
-        public GRBiz(I_GRDL repo)
+        private IGRRepo _repo;
+        public GRBiz(IGRRepo repo)
         {
             _repo = repo;
         }
         //Record object methods
-            public void AddPhillyRecord(Record newRecord)
+            Record IGRBiz.AddRecord(Record newRecord)
             {
-                _repo.AddPhillyRecord(newRecord);
+                return _repo.AddRecord(newRecord);
             }
-            public void AddNYCRecord(Record newRecord)
+            public List<Record> GetRecords()
             {
-                _repo.AddNYCRecord(newRecord);
-            }
-            public List<Record> GetPhillyRecords()
-            {
-                return _repo.GetPhillyRecords();
-            }
-            public List<Record> GetNYCRecords()
-            {
-                return _repo.GetNYCRecords();
+                return _repo.GetRecords();
             }
             public Record SearchRecordByName(string name)
             {

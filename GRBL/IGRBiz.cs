@@ -2,13 +2,11 @@ using GRModels;
 using System.Collections.Generic;
 namespace GRBL
 {
-    public interface I_GRBiz
+    public interface IGRBiz
     {
-    //Record object methods
-        List<Record> GetPhillyRecords();
-        List<Record> GetNYCRecords();
-        void AddPhillyRecord(Record newRecord);
-        void AddNYCRecord(Record newRecord);
+        //Record object methods
+        List<Record> GetRecords();
+        Record AddRecord(Record newRecord);
         Record SearchRecordByName(string name);
         Record SearchRecordByID (int RecID);
     //Order & Order Products methods

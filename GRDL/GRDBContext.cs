@@ -26,8 +26,21 @@ namespace GRDL
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderProduct> OrderProducts { get; set; }
 
-
-
-
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //modelBuilder.Entity<Jawn>().Property(jawn =>jawn.Id> Mark 4:27 Thursday
+            modelBuilder.Entity<Record>().HasData(
+                new Record
+                {
+                    ID = 1000,
+                    Artist = "Noname",
+                    RecordName = "Telefone",
+                    DaCondition = Condition.New,
+                    DaFormat = Format.Vinyl,
+                    GenreType = Genre.Rap,
+                    Price = 249.99M
+                }
+                ) ;
+        } 
     }
 }

@@ -2,13 +2,11 @@ using GRModels;
 using System.Collections.Generic;
 namespace GRDL
 {
-    public interface I_GRDL
+    public interface IGRRepo
     {
     //Record objects methods
-        List<Record> GetPhillyRecords();
-        List<Record> GetNYCRecords();
-        Record AddPhillyRecord(Record newRecord);
-        Record AddNYCRecord(Record newRecord);
+        List<Record> GetRecords();
+        Record AddRecord(Record newRecord);
         Record SearchRecordByName(string name);
         Record SearchRecordByID(int RecID);
     //Order & order products methods
