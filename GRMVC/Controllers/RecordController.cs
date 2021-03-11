@@ -34,22 +34,27 @@ namespace GRMVC.Controllers
         // GET: RecordController/Create
         public ActionResult Create()
         {
-            return View(_GRBiz.GetRecords());
+            return View("AddRecord");
         }
 
         // POST: RecordController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(RecordCRVM newRecord)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    _GRBiz.AddRecord(_mapper.cast2Record(newRecord));
+                    return RedirectToAction(nameof(Index));
+                }
+                catch
+                {
+                    return View();
+                }
             }
-            catch
-            {
-                return View();
-            }
+            return View();
         }
 
         // GET: RecordController/Edit/5
