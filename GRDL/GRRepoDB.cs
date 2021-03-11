@@ -56,7 +56,10 @@ namespace GRDL
         }
         Customer IGRRepo.AddCustomer(Customer newCustomer)
         {
-            throw new NotImplementedException();
+            _context.Customers.Add(newCustomer);
+            _context.SaveChanges();
+            return newCustomer;
+
         }
         Customer IGRRepo.SearchCustomerByFName(string name)
         {
