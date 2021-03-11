@@ -1,18 +1,31 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using GRMVC.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GRBL;
 
 namespace GRMVC.Controllers
 {
     public class CustomerController : Controller
     {
+        private IGRBiz _GRBiz;
+        private IMapper _mapper;
+    public CustomerController(IGRBiz GRBiz, IMapper mapper)
+        {
+            _GRBiz = GRBiz;
+            _mapper = mapper;
+        }
         // GET: CustomerController
         public ActionResult Login()
         {
             return View();
+        }
+        public ActionResult Homepage()
+        {
+            return View("../Home/Index");
         }
 
         // GET: CustomerController/Details/5
@@ -24,22 +37,27 @@ namespace GRMVC.Controllers
         // GET: CustomerController/Create
         public ActionResult Create()
         {
-            return View();
+            return View("Login");
         }
 
         // POST: CustomerController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(CustomerCRVM newCustomer)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    _GRBiz.AddCustomer(_mapper.cast2CustomerCRVM(newCustomer));
+                    return RedirectToAction(nameof(Homepage));
+                }
+                catch
+                {
+                    return View();
+                }
             }
-            catch
-            {
-                return View();
-            }
+            return View();
         }
 
         // GET: CustomerController/Edit/5

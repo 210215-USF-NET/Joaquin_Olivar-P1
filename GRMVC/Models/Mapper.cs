@@ -10,6 +10,7 @@ namespace GRMVC.Models
     {
         public RecordIndexVM cast2RecordIndexVM(Record record2cast)
         {
+            //Record mapper methods
             return new RecordIndexVM
             {
                 RecordName = record2cast.RecordName,
@@ -34,5 +35,18 @@ namespace GRMVC.Models
                 ID = record2cast.ID
             };
         }
+        //Customer methods
+        public Customer cast2CustomerCRVM(CustomerCRVM customer2bcast)
+        {
+            return new Customer
+            {
+                FirstName = customer2bcast.FirstName,
+                LastName = customer2bcast.LastName,
+                Email = customer2bcast.Email,
+                Address = customer2bcast.Address,
+                ZipCode = customer2bcast.ZipCode
+            };
+        }
+
     }
 }
