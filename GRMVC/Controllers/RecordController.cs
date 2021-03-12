@@ -26,9 +26,9 @@ namespace GRMVC.Controllers
         }
 
         // GET: RecordController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string name)
         {
-            return View();
+            return View(_mapper.cast2RecordCRVM(_GRBiz.SearchRecordByName(name)));
         }
 
         // GET: RecordController/Create

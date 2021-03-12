@@ -35,6 +35,19 @@ namespace GRMVC.Models
                 ID = record2cast.ID
             };
         }
+        public RecordCRVM cast2RecordCRVM(Record record2cast)
+        {
+            return new RecordCRVM
+            {
+                RecordName = record2cast.RecordName,
+                ArtistName = record2cast.Artist,
+                GenreType = record2cast.GenreType,
+                ConditionType = record2cast.DaCondition,
+                FormatType = record2cast.DaFormat,
+                Price = record2cast.Price,
+                ID = record2cast.ID
+            };
+        }
         //Customer methods
         public Customer cast2CustomerCRVM(CustomerCRVM customer2bcast)
         {

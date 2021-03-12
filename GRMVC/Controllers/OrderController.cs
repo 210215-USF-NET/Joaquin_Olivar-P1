@@ -4,15 +4,24 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GRBL;
+using GRMVC.Models;
 
 namespace GRMVC.Controllers
 {
     public class OrderController : Controller
     {
+        private IGRBiz _GRBiz;
+        private IMapper _mapper;
+        public OrderController (IGRBiz GRBiz, IMapper mapper)
+        {
+            _GRBiz = GRBiz;
+            _mapper = mapper;
+        }
         // GET: OrderController
         public ActionResult Index()
         {
-            return View();
+            return View(_GRBiz.GetOrdersByID(6));
         }
 
         // GET: OrderController/Details/5

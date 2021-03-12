@@ -39,7 +39,7 @@ namespace GRDL
         }
         List<Order> IGRRepo.GetOrdersByID(int CustomerID)
         {
-            throw new NotImplementedException();
+            return _context.Orders.AsNoTracking().Where(x => x.ID == CustomerID).ToList();
         }
         void IGRRepo.AddOrderProducts(OrderProduct orderProducts)
         {
