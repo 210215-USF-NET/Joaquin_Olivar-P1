@@ -19,6 +19,7 @@ namespace GRBL
         void AddCustomer(Customer newCustomer);
         Customer SearchCustomerByFName(string name);
         Customer SearchCustomerByID(int CustomerID);
+        Customer GetCustomerByEmail(string email);
     //Cart & cart product methods
         Cart newCart(int customerID);  
         void AddToCartProducts(CartProduct cartProducts);

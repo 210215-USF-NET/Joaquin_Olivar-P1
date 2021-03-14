@@ -19,6 +19,7 @@ namespace GRDL
         Customer AddCustomer(Customer newCustomer);
         Customer SearchCustomerByFName(string name);
         Customer SearchCustomerByID(int CustomerID);
+        Customer GetCustomerByEmail(string email);
     //Cart & cart products methods
         Cart NewCart(int customerID);
         void AddToCartProducts(CartProduct cartProducts);

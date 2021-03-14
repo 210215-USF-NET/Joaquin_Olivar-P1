@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GRBL;
+using GRModels;
 
 namespace GRMVC.Controllers
 {
@@ -19,7 +20,7 @@ namespace GRMVC.Controllers
             _mapper = mapper;
         }
         // GET: CustomerController
-        public ActionResult Login()
+        public ActionResult LoginPage()
         {
             return View();
         }
@@ -33,14 +34,11 @@ namespace GRMVC.Controllers
         {
             return View();
         }
-
-        // GET: CustomerController/Create
+        [HttpGet]
         public ActionResult Create()
         {
             return View("Login");
         }
-
-        // POST: CustomerController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(CustomerCRVM newCustomer)
@@ -59,11 +57,20 @@ namespace GRMVC.Controllers
             }
             return View();
         }
-
-        // GET: CustomerController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Login(CustomerCRVM custVM)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                Customer customer = _GRBiz.GetCustomerByEmail(custVM.Email);
+                if (customer == null)
+                {
+                    return NotFound();
+                }
+                HttpContext.Session.SetString("CustomerEmail", customer.Email);
+                HttpContext.Session.SetInt32("CustomerID", customer.ID);
+                return Redirect("/");
+            }
+            return BadRequest("Invalid model state");
         }
 
         // POST: CustomerController/Edit/5

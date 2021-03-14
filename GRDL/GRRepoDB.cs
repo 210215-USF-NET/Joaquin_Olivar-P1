@@ -69,6 +69,10 @@ namespace GRDL
         {
             throw new NotImplementedException();
         }
+        Customer IGRRepo.GetCustomerByEmail(string email)
+        {
+            return _context.Customers.AsNoTracking().Where(x => x.Email == email).FirstOrDefault();
+        }
      //Cart & cart products methods
         Cart IGRRepo.NewCart(int customerID)
         {

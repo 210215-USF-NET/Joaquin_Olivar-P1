@@ -61,6 +61,10 @@ namespace GRBL
             {
                 return _repo.SearchCustomerByID(CustomerID);
             }
+            public Customer GetCustomerByEmail(string email)
+            {
+                return _repo.GetCustomerByEmail(email);
+            }
          //Cart & cart product methods
             public Cart newCart(int customerID)
             {

@@ -17,7 +17,7 @@ namespace GRMVC.Models
         public string Email { get; set; }
         public string Address { get; set; }
         [DisplayName("Zip Code")]
-        //[Range(5,5, ErrorMessage = "Zip code must have 5 digits")]
+        //[Range(4,6, ErrorMessage = "Zip code must have 5 digits")]
         public int ZipCode { get; set; }
     }
 }
