@@ -48,6 +48,6 @@
 </div>
 <div>
     @Html.ActionLink("Edit", "Edit", new { name = Model.RecordName }) |
-    @Html.ActionLink("Add to Cart", "Checkout","Cart") |
+    @Html.ActionLink("Add to Cart", "Add2Cart","Cart", Model.ID) |
     <a asp-action="Index">Back to List</a>
 </div>

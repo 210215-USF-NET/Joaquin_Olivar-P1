@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using GRBL;
 using GRMVC.Models;
+using GRModels;
 
 namespace GRMVC.Controllers
 {
@@ -20,9 +21,10 @@ namespace GRMVC.Controllers
         }
 
         // GET: CartController
+        [HttpGet]
         public ActionResult Checkout()
         {
-            return View(_GRBiz.GetCartProducts());
+            return View(_GRBiz.GetCartProducts().Select(x => _mapper.cast2CartCheckoutVM(x)).ToList());
         }
 
         // GET: CartController/Details/5
@@ -30,11 +32,10 @@ namespace GRMVC.Controllers
         {
             return View();
         }
-
-        // GET: CartController/Create
-        [HttpPost]
-        public ActionResult Add2Cart()
+        
+        public ActionResult Add2Cart(int RecID, int Quan, int CartID)
         {
+            _GRBiz.AddToCartProducts(RecID, Quan, CartID);
             return Redirect("Checkout");
         }
 
@@ -75,9 +76,10 @@ namespace GRMVC.Controllers
         }
 
         // GET: CartController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int ID)
         {
-            return View();
+            _GRBiz.PurgeCartProduct(_GRBiz.GetCartProductByID(ID));
+            return Redirect("Checkout");
         }
 
         // POST: CartController/Delete/5

@@ -78,10 +78,14 @@ namespace GRBL
             {
                 return _repo.GetCartProducts();
             }
-            public void PurgeCartProducts(CartProduct cartProductsforDeletion)
+            CartProduct IGRBiz.GetCartProductByID(int ID)
             {
-                _repo.PurgeCartProducts(cartProductsforDeletion);
+                return _repo.GetCartProductByID(ID);
             }
+            public CartProduct PurgeCartProduct(CartProduct cartProductsforDeletion)
+                {
+                    return _repo.PurgeCartProduct(cartProductsforDeletion);
+                }
         //Inventory methods
             public List<Inventory> GetInventory(int localID)
             {

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<GRModels.CartProduct>
+﻿@model IEnumerable<GRMVC.Models.CartCheckoutVM>
 
 @{
     ViewData["Title"] = "Checkout";
@@ -13,12 +13,6 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CartID)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.RecID)
             </th>
             <th>
@@ -31,12 +25,6 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CartID)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.RecID)
             </td>
             <td>
@@ -45,7 +33,7 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Delete", "Delete", new { ID=item.ID})
             </td>
         </tr>
 }

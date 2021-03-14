@@ -95,10 +95,16 @@ namespace GRDL
         {
             return _context.CartProducts.AsNoTracking().ToList();
         }
-        void IGRRepo.PurgeCartProducts(CartProduct cartProductsforDeletion)
+        CartProduct IGRRepo.GetCartProductByID(int ID)
+        {
+            return _context.CartProducts.AsNoTracking().Where(x => x.ID == ID).FirstOrDefault();
+        }
+        CartProduct IGRRepo.PurgeCartProduct(CartProduct cartProductsforDeletion)
         {
             _context.CartProducts.Remove(cartProductsforDeletion);
             _context.SaveChanges();
+            return cartProductsforDeletion;
+
         }
      //Inventory methods
         List<Inventory> IGRRepo.GetInventory(int localID)

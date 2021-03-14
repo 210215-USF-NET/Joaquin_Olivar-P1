@@ -24,7 +24,8 @@ namespace GRDL
         Cart NewCart(int customerID);
         CartProduct AddToCartProducts(int RecID, int Quan, int CartID);
         List<CartProduct> GetCartProducts();
-        void PurgeCartProducts(CartProduct cartProductsforDeletion);
+        CartProduct GetCartProductByID(int ID);
+        CartProduct PurgeCartProduct(CartProduct cartProductsforDeletion);
     //Inventory methods
         List<Inventory> GetInventory(int localID);
         void AddToInventory(int localID, int RecID, int RecQuan);

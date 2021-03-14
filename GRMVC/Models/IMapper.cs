@@ -9,6 +9,7 @@ namespace GRMVC.Models
         RecordIndexVM cast2RecordIndexVM(Record record2cast);
         RecordCRVM cast2RecordCRVM(Record record2cast);
         Customer cast2CustomerCRVM(CustomerCRVM customer2bcast);
+        CartCheckoutVM cast2CartCheckoutVM(CartProduct cartproduct2cast);
         
     }
 }
