@@ -57,6 +57,7 @@ namespace GRMVC.Controllers
             }
             return View();
         }
+        [HttpPost]
         public ActionResult Login(CustomerCRVM custVM)
         {
             if (ModelState.IsValid)
