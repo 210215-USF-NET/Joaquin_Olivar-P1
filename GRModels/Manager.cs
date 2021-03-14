@@ -2,8 +2,9 @@ namespace GRModels
 {
     public static class Manager
     {
-        public static string userName = "JohnCusack";
-        public static string passWord = "HighFidelity";
+        public static string UserName = "JohnCusack";
+        public static string Email = "johncusack@gmail.com";
+        public static string PassWord = "HighFidelity";
     }
 }
 /*

@@ -61,9 +61,9 @@
                 @Html.DisplayFor(modelItem => item.ArtistName)
             </td>
             <td>
-               @* @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |*@
-                @Html.ActionLink("Details", "Details", new { name = item.RecordName}) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Details", "Details", new { name = item.RecordName }) |
+                @Html.ActionLink("Add to Cart", "Add2Cart", "Cart", new { /* id=item.PrimaryKey */ }) @*|
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) *@
             </td>
         </tr>
 }

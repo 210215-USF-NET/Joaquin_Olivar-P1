@@ -4,15 +4,25 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GRBL;
+using GRMVC.Models;
 
 namespace GRMVC.Controllers
 {
     public class CartController : Controller
     {
+        private IGRBiz _GRBiz;
+        private IMapper _mapper;
+        public CartController(IGRBiz GRBiz, IMapper mapper)
+        {
+            _GRBiz = GRBiz;
+            _mapper = mapper;
+        }
+
         // GET: CartController
         public ActionResult Checkout()
         {
-            return View();
+            return View(_GRBiz.GetCartProducts());
         }
 
         // GET: CartController/Details/5
@@ -22,9 +32,10 @@ namespace GRMVC.Controllers
         }
 
         // GET: CartController/Create
-        public ActionResult Create()
+        [HttpPost]
+        public ActionResult Add2Cart()
         {
-            return View();
+            return Redirect("Checkout");
         }
 
         // POST: CartController/Create

@@ -22,7 +22,7 @@ namespace GRDL
         Customer GetCustomerByEmail(string email);
     //Cart & cart products methods
         Cart NewCart(int customerID);
-        void AddToCartProducts(CartProduct cartProducts);
+        CartProduct AddToCartProducts(int RecID, int Quan, int CartID);
         List<CartProduct> GetCartProducts();
         void PurgeCartProducts(CartProduct cartProductsforDeletion);
     //Inventory methods

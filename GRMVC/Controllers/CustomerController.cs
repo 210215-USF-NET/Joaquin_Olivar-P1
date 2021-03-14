@@ -73,6 +73,12 @@ namespace GRMVC.Controllers
             }
             return BadRequest("Invalid model state");
         }
+        public ActionResult Logout()
+        {
+            HttpContext.Session.Remove("CustomerEmail");
+            HttpContext.Session.Remove("CustomerID");
+            return Redirect("/");
+        }
 
         // POST: CustomerController/Edit/5
         [HttpPost]

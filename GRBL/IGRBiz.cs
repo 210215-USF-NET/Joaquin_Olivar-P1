@@ -21,8 +21,8 @@ namespace GRBL
         Customer SearchCustomerByID(int CustomerID);
         Customer GetCustomerByEmail(string email);
     //Cart & cart product methods
-        Cart newCart(int customerID);  
-        void AddToCartProducts(CartProduct cartProducts);
+        Cart newCart(int customerID);
+        CartProduct AddToCartProducts(int RecID, int Quan, int CartID);
         List<CartProduct> GetCartProducts();
         void PurgeCartProducts(CartProduct cartProductsforDeletion);
     //Inventory methods

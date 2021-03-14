@@ -76,15 +76,24 @@ namespace GRDL
      //Cart & cart products methods
         Cart IGRRepo.NewCart(int customerID)
         {
-            throw new NotImplementedException();
+            Cart newCart = new Cart();
+            newCart.CustomerID = customerID;
+            _context.Carts.Add(newCart);
+            return newCart;
         }
-        void IGRRepo.AddToCartProducts(CartProduct cartProducts)
+        CartProduct IGRRepo.AddToCartProducts(int RecID, int Quan, int CartID)
         {
-            throw new NotImplementedException();
+            CartProduct newCP = new CartProduct();
+            newCP.RecID = RecID;
+            newCP.RecQuan = Quan;
+            newCP.CartID = CartID;
+            _context.CartProducts.Add(newCP);
+            _context.SaveChanges();
+            return newCP;
         }
         List<CartProduct> IGRRepo.GetCartProducts()
         {
-            throw new NotImplementedException();
+            return _context.CartProducts.AsNoTracking().ToList();
         }
         void IGRRepo.PurgeCartProducts(CartProduct cartProductsforDeletion)
         {
