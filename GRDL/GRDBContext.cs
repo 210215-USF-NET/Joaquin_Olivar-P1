@@ -28,7 +28,43 @@ namespace GRDL
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<Customer>().HasMany(c => c.Cart).WithOne(c => c.Customer).OnDelete(DeleteBehavior.Cascade);
+            //Customer overrides
+            modelBuilder.Entity<Customer>().
+                HasMany(c => c.Carts).
+                WithOne(c => c.Customer).
+                OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<Customer>().
+                HasMany(c => c.Orders).
+                WithOne(o => o.Customer).
+                OnDelete(DeleteBehavior.SetNull);
+            //Cart & cartProduct overrides
+            modelBuilder.Entity<CartProduct>().
+                HasKey(cp => new { cp.CartID, cp.RecID });
+            modelBuilder.Entity<CartProduct>()
+                .HasOne(cp => cp.Cart)
+                .WithMany(c => c.CartProducts)
+                .HasForeignKey(cp => cp.CartID);
+            modelBuilder.Entity<CartProduct>()
+                .HasOne(cp => cp.Record)
+                .WithMany(r => r.CartProducts)
+                .HasForeignKey(cp => cp.RecID);
+            //Location overrides
+            modelBuilder.Entity<LocationProduct>()
+                .HasKey(lp => new { lp.LocID, lp.RecID });
+            modelBuilder.Entity<LocationProduct>()
+                .HasOne(lp => lp.Location)
+                .WithMany(l => l.LocationProducts)
+                .HasForeignKey(lp => lp.LocID);
+            modelBuilder.Entity<LocationProduct>()
+                .HasOne(lp => lp.Record)
+                .WithMany(r => r.LocationProducts)
+                .HasForeignKey(lp => lp.LocID);
+
+            
+            
+            
+            
+            
             modelBuilder.Entity<Record>().HasData(
                 new Record
                 {
