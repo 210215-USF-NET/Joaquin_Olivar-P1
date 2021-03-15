@@ -86,6 +86,10 @@ namespace GRBL
             {
                 return _repo.GetCartProductByID(ID);
             }
+             public List<CartProduct> GetCartProductsByCartID(int ID)
+            {
+                return _repo.GetCartProductsByCartID(ID);
+            }
             public CartProduct PurgeCartProduct(CartProduct cartProductsforDeletion)
                 {
                     return _repo.PurgeCartProduct(cartProductsforDeletion);

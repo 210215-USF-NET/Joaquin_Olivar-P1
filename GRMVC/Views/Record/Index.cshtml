@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<GRMVC.Models.RecordIndexVM>
+@using Microsoft.AspNetCore.Http;
 
 @{
     ViewData["Title"] = "Records List";
@@ -62,7 +63,7 @@
             </td>
             <td>
                 @Html.ActionLink("Details", "Details", new { name = item.RecordName }) |
-                @Html.ActionLink("Add to Cart", "Add2Cart", "Cart", new { RecID = item.ID, Quan = 1, CartID = 1 }) |
+                @Html.ActionLink("Add to Cart", "Add2Cart", "Cart", new { RecID = item.ID, Quan = 1, CartID = Context.Session.GetInt32("CartID") }) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>

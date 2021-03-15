@@ -24,8 +24,8 @@ namespace GRMVC.Controllers
         [HttpGet]
         public ActionResult Checkout()
         {
-
-            return View(_GRBiz.GetCartProducts().Select(x => _mapper.cast2CartCheckoutVM(x)).ToList());
+            return View(_GRBiz.GetCartProductsByCartID((int)HttpContext.Session.GetInt32("CartID"))
+                .Select(x => _mapper.cast2CartCheckoutVM(x)).ToList());
         }
 
         // GET: CartController/Details/5

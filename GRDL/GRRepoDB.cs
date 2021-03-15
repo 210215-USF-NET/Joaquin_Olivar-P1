@@ -104,6 +104,10 @@ namespace GRDL
         {
             return _context.CartProducts.AsNoTracking().Where(x => x.ID == ID).FirstOrDefault();
         }
+        List<CartProduct> IGRRepo.GetCartProductsByCartID(int ID)
+        {
+            return _context.CartProducts.AsNoTracking().Where(x => x.CartID == ID).ToList();
+        }
         CartProduct IGRRepo.PurgeCartProduct(CartProduct cartProductsforDeletion)
         {
             _context.CartProducts.Remove(cartProductsforDeletion);
