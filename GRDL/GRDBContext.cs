@@ -19,7 +19,7 @@ namespace GRDL
         }
         public DbSet<Record> Records { get; set; }
         public DbSet<Customer> Customers { get; set; }
-        public DbSet<LocationProduct> Inventories { get; set; }
+        public DbSet<LocationProduct> LocationProducts { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<Cart> Carts { get; set; }
         public DbSet<CartProduct> CartProducts { get; set; }
@@ -59,6 +59,18 @@ namespace GRDL
                 .HasOne(lp => lp.Record)
                 .WithMany(r => r.LocationProducts)
                 .HasForeignKey(lp => lp.LocID);
+            //Order ovverrides
+            modelBuilder.Entity<OrderProduct>()
+                .HasKey(op => new { op.OrdID, op.RecID });
+            modelBuilder.Entity<OrderProduct>()
+                .HasOne(op => op.Order)
+                .WithMany(o => o.OrderProducts)
+                .HasForeignKey(op => op.OrdID);
+            modelBuilder.Entity<OrderProduct>()
+                .HasOne(op => op.Record)
+                .WithMany(r => r.OrderProducts)
+                .HasForeignKey(op=>op.RecID);
+
 
             
             
