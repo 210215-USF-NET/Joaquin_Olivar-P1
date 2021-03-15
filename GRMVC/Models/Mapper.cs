@@ -68,7 +68,8 @@ namespace GRMVC.Models
                 ID = cartproduct2cast.ID,
                 CartID = cartproduct2cast.CartID,
                 RecID = cartproduct2cast.RecID,
-                RecQuan = cartproduct2cast.RecQuan
+                RecQuan = cartproduct2cast.RecQuan,
+                RecordName = cartproduct2cast.Record.RecordName
             };
 
         }

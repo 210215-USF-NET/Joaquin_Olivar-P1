@@ -45,9 +45,9 @@ namespace GRBL
                 return _repo.GetOrderProductsByID(OrderID);
             }
         //Customer methods
-            public void AddCustomer(Customer newCustomer)
+            public Customer AddCustomer(Customer newCustomer)
             {
-                _repo.AddCustomer(newCustomer);
+                return _repo.AddCustomer(newCustomer);
             }
             public List<Customer> GetCustomers()
             {

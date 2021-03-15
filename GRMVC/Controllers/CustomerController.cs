@@ -47,7 +47,9 @@ namespace GRMVC.Controllers
             {
                 try
                 {
-                    _GRBiz.AddCustomer(_mapper.cast2CustomerCRVM(newCustomer));
+                    Customer newCustomerModel = new Customer(); 
+                    newCustomerModel = _GRBiz.AddCustomer(_mapper.cast2CustomerCRVM(newCustomer));
+                    _GRBiz.newCart(newCustomerModel.ID);
                     return RedirectToAction(nameof(Homepage));
                 }
                 catch

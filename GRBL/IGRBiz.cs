@@ -16,7 +16,7 @@ namespace GRBL
         List<OrderProduct> GetOrderProductsByID(int OrderID);
     //Customer methods
         List<Customer> GetCustomers();
-        void AddCustomer(Customer newCustomer);
+        Customer AddCustomer(Customer newCustomer);
         Customer SearchCustomerByFName(string name);
         Customer SearchCustomerByID(int CustomerID);
         Customer GetCustomerByEmail(string email);
