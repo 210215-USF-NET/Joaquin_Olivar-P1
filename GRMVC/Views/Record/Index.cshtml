@@ -62,8 +62,8 @@
             </td>
             <td>
                 @Html.ActionLink("Details", "Details", new { name = item.RecordName }) |
-                @Html.ActionLink("Add to Cart", "Add2Cart", "Cart", new { /* id=item.PrimaryKey */ }) @*|
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) *@
+                @Html.ActionLink("Add to Cart", "Add2Cart", "Cart", new { RecID = item.ID, Quan = 1, CartID = 1 }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>
 }

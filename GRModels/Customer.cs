@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 namespace GRModels
 {
     public class Customer
@@ -22,6 +23,9 @@ namespace GRModels
         public string Address {get;set;}
 
         public int ZipCode {get; set;}
+        public ICollection<Cart> Carts { get; set; }
+        public ICollection<Order> Orders { get; set; }
+        
 
         public override string ToString() => $"Customer Details: \n\t Name: {this.FirstName} {this.LastName} \n\t {this.Email} \n\t Address: {this.Address}, {this.ZipCode} \n\t Customer ID: {this.ID}";
         

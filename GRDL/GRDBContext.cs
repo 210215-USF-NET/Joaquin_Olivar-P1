@@ -19,7 +19,7 @@ namespace GRDL
         }
         public DbSet<Record> Records { get; set; }
         public DbSet<Customer> Customers { get; set; }
-        public DbSet<Inventory> Inventories { get; set; }
+        public DbSet<LocationProduct> Inventories { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<Cart> Carts { get; set; }
         public DbSet<CartProduct> CartProducts { get; set; }
@@ -28,7 +28,7 @@ namespace GRDL
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<Jawn>().Property(jawn =>jawn.Id> Mark 4:27 Thursday
+            //modelBuilder.Entity<Customer>().HasMany(c => c.Cart).WithOne(c => c.Customer).OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<Record>().HasData(
                 new Record
                 {

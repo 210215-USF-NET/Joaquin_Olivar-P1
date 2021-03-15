@@ -24,6 +24,7 @@ namespace GRMVC.Controllers
         [HttpGet]
         public ActionResult Checkout()
         {
+
             return View(_GRBiz.GetCartProducts().Select(x => _mapper.cast2CartCheckoutVM(x)).ToList());
         }
 
@@ -39,6 +40,20 @@ namespace GRMVC.Controllers
             return Redirect("Checkout");
         }
 
+
+        public ActionResult BuyCart()
+        {
+            //Order finalOrder = new Order();
+            //OrderProduct orderProductList = new OrderProduct();
+            //
+            //_GRBiz.AddOrder();
+
+            return View("OrderConfirm");
+        }
+        public ActionResult OrderConfirm()
+        {
+            return View();
+        }
         // POST: CartController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]

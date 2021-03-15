@@ -87,7 +87,7 @@ namespace GRBL
                     return _repo.PurgeCartProduct(cartProductsforDeletion);
                 }
         //Inventory methods
-            public List<Inventory> GetInventory(int localID)
+            public List<LocationProduct> GetInventory(int localID)
             {
                 return _repo.GetInventory(localID);
             }

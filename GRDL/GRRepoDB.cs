@@ -107,7 +107,7 @@ namespace GRDL
 
         }
      //Inventory methods
-        List<Inventory> IGRRepo.GetInventory(int localID)
+        List<LocationProduct> IGRRepo.GetInventory(int localID)
         {
             throw new NotImplementedException();
         }

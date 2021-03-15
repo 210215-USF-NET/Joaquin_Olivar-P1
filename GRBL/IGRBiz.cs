@@ -27,7 +27,7 @@ namespace GRBL
         CartProduct GetCartProductByID(int ID);
         CartProduct PurgeCartProduct(CartProduct cartProductsforDeletion);
     //Inventory methods
-        List<Inventory> GetInventory(int localID);
+        List<LocationProduct> GetInventory(int localID);
         void AddToInventory(int localID, int RecID, int RecQuan);
     //Location methods
         Location GetThisLocation(int localID);
