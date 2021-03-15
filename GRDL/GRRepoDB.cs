@@ -82,6 +82,10 @@ namespace GRDL
             _context.SaveChanges();
             return newCart;
         }
+        Cart IGRRepo.GetCartByCustomer(int customerID)
+        {
+            return _context.Carts.AsNoTracking().Where(x => x.CustomerID == customerID).FirstOrDefault();
+        }
         CartProduct IGRRepo.AddToCartProducts(int RecID, int Quan, int CartID)
         {
             CartProduct newCP = new CartProduct();

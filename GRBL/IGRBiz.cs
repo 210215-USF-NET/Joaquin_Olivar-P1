@@ -22,6 +22,7 @@ namespace GRBL
         Customer GetCustomerByEmail(string email);
     //Cart & cart product methods
         Cart newCart(int customerID);
+        Cart GetCartByCustomer(int customerID);
         CartProduct AddToCartProducts(int RecID, int Quan, int CartID);
         List<CartProduct> GetCartProducts();
         CartProduct GetCartProductByID(int ID);

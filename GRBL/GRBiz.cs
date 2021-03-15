@@ -70,6 +70,10 @@ namespace GRBL
             {
                 return _repo.NewCart(customerID);
             }
+            public Cart GetCartByCustomer(int customerID)
+            {
+                return _repo.GetCartByCustomer(customerID);
+            }
             CartProduct IGRBiz.AddToCartProducts(int RecID, int Quan, int CartID)
             {
                 return _repo.AddToCartProducts(RecID, Quan, CartID);

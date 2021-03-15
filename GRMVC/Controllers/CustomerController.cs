@@ -71,6 +71,8 @@ namespace GRMVC.Controllers
                 }
                 HttpContext.Session.SetString("CustomerEmail", customer.Email);
                 HttpContext.Session.SetInt32("CustomerID", customer.ID);
+                Cart customerCart = _GRBiz.GetCartByCustomer(customer.ID);
+                HttpContext.Session.SetInt32("CartID", customerCart.ID);
                 return Redirect("/");
             }
             return BadRequest("Invalid model state");
@@ -79,6 +81,7 @@ namespace GRMVC.Controllers
         {
             HttpContext.Session.Remove("CustomerEmail");
             HttpContext.Session.Remove("CustomerID");
+            HttpContext.Session.Remove("CartID");
             return Redirect("/");
         }
 

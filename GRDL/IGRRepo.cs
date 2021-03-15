@@ -22,6 +22,7 @@ namespace GRDL
         Customer GetCustomerByEmail(string email);
     //Cart & cart products methods
         Cart NewCart(int customerID);
+        Cart GetCartByCustomer(int customerID);
         CartProduct AddToCartProducts(int RecID, int Quan, int CartID);
         List<CartProduct> GetCartProducts();
         CartProduct GetCartProductByID(int ID);
