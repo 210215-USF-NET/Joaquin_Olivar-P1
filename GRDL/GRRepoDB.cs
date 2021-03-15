@@ -79,6 +79,7 @@ namespace GRDL
             Cart newCart = new Cart();
             newCart.CustomerID = customerID;
             _context.Carts.Add(newCart);
+            _context.SaveChanges();
             return newCart;
         }
         CartProduct IGRRepo.AddToCartProducts(int RecID, int Quan, int CartID)

@@ -28,6 +28,29 @@ namespace GRDL
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //Self incrementing ID's (lol)
+            modelBuilder.Entity<Cart>()
+                   .Property(x => x.ID)
+                   .ValueGeneratedOnAdd();
+            modelBuilder.Entity<CartProduct>()
+                .Property(x => x.ID)
+                .ValueGeneratedOnAdd();
+            modelBuilder.Entity<Customer>()
+                .Property(x => x.ID)
+                .ValueGeneratedOnAdd();
+            modelBuilder.Entity<LocationProduct>()
+                .Property(x => x.ID)
+                .ValueGeneratedOnAdd();
+            modelBuilder.Entity<Location>()
+                .Property(x => x.ID)
+                .ValueGeneratedOnAdd();
+            modelBuilder.Entity<Order>()
+                .Property(x => x.ID)
+                .ValueGeneratedOnAdd();
+            modelBuilder.Entity<OrderProduct>()
+                .Property(x => x.ID)
+                .ValueGeneratedOnAdd();
+
             //Customer overrides
             modelBuilder.Entity<Customer>().
                 HasMany(c => c.Carts).
