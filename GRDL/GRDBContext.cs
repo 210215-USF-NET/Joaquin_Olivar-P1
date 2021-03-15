@@ -94,12 +94,6 @@ namespace GRDL
                 .WithMany(r => r.OrderProducts)
                 .HasForeignKey(op=>op.RecID);
 
-
-            
-            
-            
-            
-            
             modelBuilder.Entity<Record>().HasData(
                 new Record
                 {

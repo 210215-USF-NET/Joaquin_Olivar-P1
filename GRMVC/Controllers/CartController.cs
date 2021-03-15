@@ -41,16 +41,31 @@ namespace GRMVC.Controllers
         }
 
 
-        public ActionResult BuyCart()
+        public ActionResult BuyCart(List<CartCheckoutVM> DaCart)
         {
-            //Order finalOrder = new Order();
-            //OrderProduct orderProductList = new OrderProduct();
-            //
-            //_GRBiz.AddOrder();
-
-            return View("OrderConfirm");
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    Order finalorder = _GRBiz.AddOrder((int)HttpContext.Session.GetInt32("CartID"),
+                   (int)HttpContext.Session.GetInt32("CustomerID"));
+                    DaCart = _GRBiz.GetCartProductsByCartID((int)HttpContext.Session.GetInt32("CartID"))
+                .Select(x => _mapper.cast2CartCheckoutVM(x)).ToList();
+                    foreach (CartCheckoutVM item in DaCart)
+                    {
+                        _GRBiz.AddOrderProduct(finalorder.ID, item.RecID, item.RecQuan);
+                        _GRBiz.PurgeCartProduct(_mapper.cast2CartProduct(item));
+                    }
+                    return View("OrderConfirm");
+                }
+                catch
+                {
+                    return View();
+                }
+            }
+            return View();
         }
-        public ActionResult OrderConfirm()
+            public ActionResult OrderConfirm()
         {
             return View();
         }
@@ -94,7 +109,7 @@ namespace GRMVC.Controllers
         public ActionResult Delete(int ID)
         {
             _GRBiz.PurgeCartProduct(_GRBiz.GetCartProductByID(ID));
-            return Redirect("Checkout");
+            return RedirectToAction(nameof(Checkout));
         }
 
         // POST: CartController/Delete/5

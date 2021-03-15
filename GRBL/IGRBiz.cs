@@ -10,9 +10,9 @@ namespace GRBL
         Record SearchRecordByName(string name);
         Record SearchRecordByID (int RecID);
     //Order & Order Products methods
-        void AddOrder(Order order);
+        Order AddOrder(int CartID, int CusID);
         List<Order> GetOrdersByID(int CustomerID);
-        void addOrderProducts(OrderProduct newOrderProducts);
+        OrderProduct AddOrderProduct(int OrdID, int RecID, int RecQuan);
         List<OrderProduct> GetOrderProductsByID(int OrderID);
     //Customer methods
         List<Customer> GetCustomers();

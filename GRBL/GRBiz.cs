@@ -28,17 +28,17 @@ namespace GRBL
                 return _repo.SearchRecordByID(RecID);
             }
         //Order & Order Products methods
-            public void AddOrder(Order order)
+            public Order AddOrder(int CartID, int CusID)
             {
-                _repo.AddOrder(order);
+                return _repo.AddOrder(CartID, CusID);
             }
             public List<Order> GetOrdersByID(int CustomerID)
             {
                 return _repo.GetOrdersByID(CustomerID);
             }
-            public void addOrderProducts(OrderProduct newOrderProducts)
+            public OrderProduct AddOrderProduct(int OrdID, int RecID, int RecQuan)
             {
-                _repo.AddOrderProducts(newOrderProducts);
+                return _repo.AddOrderProduct(OrdID, RecID, RecQuan);
             }
             public List<OrderProduct> GetOrderProductsByID(int OrderID)
             {

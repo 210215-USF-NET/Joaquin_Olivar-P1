@@ -6,44 +6,45 @@
 }
 
 <h1>Checkout</h1>
+    <table class="table">
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.RecID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RecordName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RecQuan)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.RecID)
-                </td>
                 <th>
-                    @Html.DisplayFor(modelItem => item.RecordName)
+                    @Html.DisplayNameFor(model => model.RecID)
                 </th>
-                <td>
-                    @Html.DisplayFor(modelItem => item.RecQuan)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { ID = item.ID })
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.RecordName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RecQuan)
+                </th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RecID)
+                    </td>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.RecordName)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RecQuan)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { ID = item.ID })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 <p>
-    <a asp-action="Create">Buy EVERYTHING</a>
+    <a asp-action="BuyCart">Buy Cart</a>
 </p>
+

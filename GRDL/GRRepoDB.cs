@@ -33,17 +33,29 @@ namespace GRDL
             return _context.Records.AsNoTracking().FirstOrDefault(record => record.ID == RecID);
         }
      //Order & order products methods
-        void IGRRepo.AddOrder(Order order) //In web dev, we shuld have these return the object type
+        public Order AddOrder(int CartID, int CusID)
         {
-            throw new NotImplementedException();
+            Order finalOrder = new Order();
+            finalOrder.CartID = CartID;
+            finalOrder.CusID = CusID;
+            finalOrder.OrDate = DateTime.Now;
+            _context.Orders.Add(finalOrder);
+            _context.SaveChanges();
+            return finalOrder;
         }
         List<Order> IGRRepo.GetOrdersByID(int CustomerID)
         {
             return _context.Orders.AsNoTracking().Where(x => x.ID == CustomerID).ToList();
         }
-        void IGRRepo.AddOrderProducts(OrderProduct orderProducts)
+        OrderProduct IGRRepo.AddOrderProduct(int OrdID, int RecID, int RecQuan)
         {
-            throw new NotImplementedException();
+            OrderProduct processedOrder = new OrderProduct();
+            processedOrder.OrdID = OrdID;
+            processedOrder.RecID = RecID;
+            processedOrder.RecQuan = RecQuan;
+            _context.OrderProducts.Add(processedOrder);
+            _context.SaveChanges();
+            return processedOrder;
         }
         List<OrderProduct> IGRRepo.GetOrderProductsByID(int OrderID)
         {
@@ -52,7 +64,7 @@ namespace GRDL
      //Customer methods
         List<Customer> IGRRepo.GetCustomers()
         {
-            throw new NotImplementedException();
+            return _context.Customers.ToList();
         }
         Customer IGRRepo.AddCustomer(Customer newCustomer)
         {

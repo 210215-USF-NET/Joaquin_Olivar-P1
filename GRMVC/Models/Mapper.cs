@@ -72,5 +72,15 @@ namespace GRMVC.Models
             };
 
         }
+        public CartProduct cast2CartProduct(CartCheckoutVM ccvm2cast)
+        {
+            return new CartProduct
+            {
+                ID = ccvm2cast.ID,
+                CartID = ccvm2cast.CartID,
+                RecID = ccvm2cast.RecID,
+                RecQuan = ccvm2cast.RecQuan
+            };
+        }
     }
 }

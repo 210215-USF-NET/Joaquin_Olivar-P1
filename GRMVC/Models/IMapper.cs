@@ -10,6 +10,7 @@ namespace GRMVC.Models
         RecordCRVM cast2RecordCRVM(Record record2cast);
         Customer cast2CustomerCRVM(CustomerCRVM customer2bcast);
         CartCheckoutVM cast2CartCheckoutVM(CartProduct cartproduct2cast);
+        CartProduct cast2CartProduct(CartCheckoutVM ccvm2cast);
         
     }
 }
