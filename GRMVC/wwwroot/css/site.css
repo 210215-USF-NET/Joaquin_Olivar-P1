@@ -11,7 +11,13 @@ a.navbar-brand {
 a {
   color: #0366d6;
 }
+th {
+    color: whitesmoke;
+}
 
+td {
+    color: whitesmoke;
+}
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;

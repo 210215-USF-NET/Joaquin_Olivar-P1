@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 namespace GRModels
 {
-    public static class Manager
+    public class Manager
     {
-        public static string Email = "johncusack@gmail.com";
+        public string Email = "johncusack@gmail.com";
     }
 }
 /*
