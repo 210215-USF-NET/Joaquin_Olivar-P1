@@ -38,6 +38,15 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="AdminLoginPage">Admin Login</a>
                             </li>
                         }
+                        else if (Context.Session.GetString("CustomerEmail") == "johncusack@gmail.com")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="CustomerInformation">Customer Info</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Logout">Logout</a>
+                            </li>
+                        }
                         else
                         {
                             <li class="nav-item">

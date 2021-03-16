@@ -5,11 +5,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GRModels;
+using GRBL;
+using GRMVC.Models;
 namespace GRMVC.Controllers
 {
     public class AdminController : Controller
     {
         // GET: ManagerController
+        private IGRBiz _GRBiz;
+        private IMapper _mapper;
+        public AdminController(IGRBiz GRBiz, IMapper mapper)
+        {
+            _GRBiz = GRBiz;
+            _mapper = mapper;
+        }
         public ActionResult AdminLoginPage()
         {
             return View();
@@ -22,7 +31,7 @@ namespace GRMVC.Controllers
                 Manager manager = new Manager();
                 if (Email == manager.Email)
                 {
-
+                    HttpContext.Session.SetString("CustomerEmail", manager.Email);
                     return Redirect("/");
                 }
                 return NotFound();
@@ -30,9 +39,15 @@ namespace GRMVC.Controllers
             return BadRequest("Invalid model state");
         }
         // GET: ManagerController/Create
-        public ActionResult Create()
+        public ActionResult CustomerInformation()
         {
-            return View();
+            List<Customer> CustomerList = _GRBiz.GetCustomers();
+            List<CustomerCRVM> CustomerCRVMList = new List<CustomerCRVM>();
+            foreach (Customer customer in CustomerList)
+            {
+                CustomerCRVMList.Add(_mapper.cast2CustomerCRVM(customer));
+            }
+            return View(CustomerCRVMList);
         }
 
         // POST: ManagerController/Create
