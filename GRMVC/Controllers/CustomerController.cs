@@ -92,7 +92,14 @@ namespace GRMVC.Controllers
         }
         public ActionResult Details(int ID)
         {
-            return View(_GRBiz.GetOrderProductsByID(ID).Select(x=>_mapper.cast2OrderProductCRVM(x)).ToList());
+             List<OrderProduct> opList = _GRBiz.GetOrderProductsByID(ID);
+            List<OrderProductCRVM> opvmList = new List<OrderProductCRVM>();
+            foreach (OrderProduct op in opList)
+            {
+                Record opR = _GRBiz.SearchRecordByID(op.RecID);
+                opvmList.Add(_mapper.cast2OrderProductCRVM(op, opR));
+            }
+            return View(opvmList);
         }
     }
 }

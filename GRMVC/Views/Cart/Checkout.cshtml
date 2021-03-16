@@ -19,6 +19,9 @@
                 <th>
                     @Html.DisplayNameFor(model => model.RecQuan)
                 </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
                 <th></th>
             </tr>
         </thead>
@@ -34,6 +37,9 @@
                     </th>
                     <td>
                         @Html.DisplayFor(modelItem => item.RecQuan)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
                     </td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

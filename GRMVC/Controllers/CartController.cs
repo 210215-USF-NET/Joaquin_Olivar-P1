@@ -24,8 +24,14 @@ namespace GRMVC.Controllers
         [HttpGet]
         public ActionResult Checkout()
         {
-            return View(_GRBiz.GetCartProductsByCartID((int)HttpContext.Session.GetInt32("CartID"))
-                .Select(x => _mapper.cast2CartCheckoutVM(x)).ToList());
+            List<CartProduct> cpList = _GRBiz.GetCartProductsByCartID((int)HttpContext.Session.GetInt32("CartID"));
+            List<CartCheckoutVM> cpvmList = new List<CartCheckoutVM>();
+            foreach (CartProduct cp in cpList)
+            {
+                Record cpR = _GRBiz.SearchRecordByID(cp.RecID);
+                cpvmList.Add(_mapper.cast2CartCheckoutVM(cp, cpR));
+            }
+            return View(cpvmList);
         }
 
         // GET: CartController/Details/5
@@ -63,7 +69,7 @@ namespace GRMVC.Controllers
                     return View();
                 }
             }
-            return View();
+            return BadRequest("Didn't work");
         }
             public ActionResult OrderConfirm()
         {

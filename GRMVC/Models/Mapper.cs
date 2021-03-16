@@ -82,7 +82,19 @@ namespace GRMVC.Models
                 RecID = cartproduct2cast.RecID,
                 RecQuan = cartproduct2cast.RecQuan
             };
-
+        }
+        public CartCheckoutVM cast2CartCheckoutVM(CartProduct cartproduct2cast, Record record2cast)
+        {
+            return new CartCheckoutVM
+            {
+                ID = cartproduct2cast.ID,
+                CartID = cartproduct2cast.CartID,
+                RecID = cartproduct2cast.RecID,
+                RecQuan = cartproduct2cast.RecQuan,
+                RecordName = record2cast.RecordName,
+                ArtistName = record2cast.Artist,
+                Price = record2cast.Price
+            };
         }
         public CartProduct cast2CartProduct(CartCheckoutVM ccvm2cast)
         {
@@ -103,13 +115,16 @@ namespace GRMVC.Models
                 TotalCost = order2cast.TotalCost
             };
         }
-        public OrderProductCRVM cast2OrderProductCRVM(OrderProduct orderprod2cast)
+        public OrderProductCRVM cast2OrderProductCRVM(OrderProduct orderprod2cast, Record record2cast)
         {
             return new OrderProductCRVM
             {
                 ID = orderprod2cast.ID,
                 RecID = orderprod2cast.RecID,
                 RecQuan = orderprod2cast.RecQuan,
+                RecordName = record2cast.RecordName,
+                ArtistName = record2cast.Artist,
+                Price = record2cast.Price
             };
         }
 

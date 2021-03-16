@@ -17,5 +17,10 @@ namespace GRMVC.Models
         public Order Order { get; set; }
         [DisplayName("Record Quantity")]
         public int RecQuan { get; set; }
+        [DisplayName("Record Quantity")]
+        public string RecordName { get; set; }
+        [DisplayName("Artist")]
+        public string ArtistName { get; set; }
+        public Decimal Price { get; set; }
     }
 }
