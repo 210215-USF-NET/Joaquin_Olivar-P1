@@ -93,7 +93,6 @@ namespace GRMVC.Controllers
         public ActionResult Details(int ID)
         {
             return View(_GRBiz.GetOrderProductsByID(ID).Select(x=>_mapper.cast2OrderProductCRVM(x)).ToList());
-            //_mapper.cast2RecordCRVM(_GRBiz.SearchRecordByName(name))
         }
     }
 }

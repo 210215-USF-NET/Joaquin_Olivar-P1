@@ -1,10 +1,9 @@
+using System.Collections.Generic;
 namespace GRModels
 {
     public static class Manager
     {
-        public static string UserName = "JohnCusack";
         public static string Email = "johncusack@gmail.com";
-        public static string PassWord = "HighFidelity";
     }
 }
 /*
