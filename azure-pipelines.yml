@@ -15,20 +15,19 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- task: NuGetToolInstaller@1
-
-- task: NuGetCommand@2
+- task: DotNetCoreCLI@2
   inputs:
-    restoreSolution: '$(solution)'
-
-- task: VSBuild@1
+    command: 'build'
+- task: DotNetCoreCLI@2
   inputs:
-    solution: '$(solution)'
-    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-
-- task: VSTest@2
+    command: 'publish'
+    projects: '**/GRMVC/*.csproj'
+    zipAfterPublish: true
+    publishWebProjects: true
+- task: AzureRmWebAppDeployment@4
   inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure subscription 1(c991e668-2af4-4810-81f1-3181b0ed573c)'
+    appType: 'webApp'
+    WebAppName: 'gudrecords'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
