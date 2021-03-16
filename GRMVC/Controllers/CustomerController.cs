@@ -48,7 +48,7 @@ namespace GRMVC.Controllers
                 try
                 {
                     Customer newCustomerModel = new Customer(); 
-                    newCustomerModel = _GRBiz.AddCustomer(_mapper.cast2CustomerCRVM(newCustomer));
+                    newCustomerModel = _GRBiz.AddCustomer(_mapper.cast2Customer(newCustomer));
                     _GRBiz.newCart(newCustomerModel.ID);
                     return RedirectToAction(nameof(Homepage));
                 }
@@ -85,19 +85,9 @@ namespace GRMVC.Controllers
             return Redirect("/");
         }
 
-        // POST: CustomerController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult CustomerInfo()
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return View(_mapper.cast2CustomerCRVM(_GRBiz.GetCustomerByEmail(HttpContext.Session.GetString("CustomerEmail"))));
         }
 
         // GET: CustomerController/Delete/5

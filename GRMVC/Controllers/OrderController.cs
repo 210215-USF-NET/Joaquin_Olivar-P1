@@ -21,7 +21,7 @@ namespace GRMVC.Controllers
         // GET: OrderController
         public ActionResult Index()
         {
-            return View(_GRBiz.GetOrdersByID(6));
+            return View();
         }
 
         // GET: OrderController/Details/5

@@ -49,9 +49,20 @@ namespace GRMVC.Models
             };
         }
         //Customer methods
-        public Customer cast2CustomerCRVM(CustomerCRVM customer2bcast)
+        public Customer cast2Customer(CustomerCRVM customer2bcast)
         {
             return new Customer
+            {
+                FirstName = customer2bcast.FirstName,
+                LastName = customer2bcast.LastName,
+                Email = customer2bcast.Email,
+                Address = customer2bcast.Address,
+                ZipCode = customer2bcast.ZipCode
+            };
+        }
+        public CustomerCRVM cast2CustomerCRVM(Customer customer2bcast)
+        {
+            return new CustomerCRVM
             {
                 FirstName = customer2bcast.FirstName,
                 LastName = customer2bcast.LastName,
