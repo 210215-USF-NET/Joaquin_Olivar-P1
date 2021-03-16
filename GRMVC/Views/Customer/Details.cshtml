@@ -1,0 +1,50 @@
+﻿@model IEnumerable<GRMVC.Models.OrderProductCRVM>
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrdID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecQuan)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrdID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecQuan)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

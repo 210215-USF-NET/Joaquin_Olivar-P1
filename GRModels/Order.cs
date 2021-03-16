@@ -12,7 +12,7 @@ namespace GRModels
         public Customer Customer {get; set;}
         public int CusID {get; set;}
         public ICollection<OrderProduct> OrderProducts { get; set; }
-        public Decimal TotalCoast { get; set; }
+        public Decimal TotalCost { get; set; }
 
         public override string ToString() => $"\tOrder Number: {ID}\n\tOrder Date: {OrDate}";
     }

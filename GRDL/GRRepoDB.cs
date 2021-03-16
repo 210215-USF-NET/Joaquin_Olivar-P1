@@ -45,7 +45,7 @@ namespace GRDL
         }
         List<Order> IGRRepo.GetOrdersByID(int CustomerID)
         {
-            return _context.Orders.AsNoTracking().Where(x => x.ID == CustomerID).ToList();
+            return _context.Orders.AsNoTracking().Where(x => x.CusID == CustomerID).ToList();
         }
         OrderProduct IGRRepo.AddOrderProduct(int OrdID, int RecID, int RecQuan)
         {
@@ -59,7 +59,7 @@ namespace GRDL
         }
         List<OrderProduct> IGRRepo.GetOrderProductsByID(int OrderID)
         {
-            throw new NotImplementedException();
+            return _context.OrderProducts.AsNoTracking().Where(x => x.OrdID == OrderID).ToList();
         }
      //Customer methods
         List<Customer> IGRRepo.GetCustomers()

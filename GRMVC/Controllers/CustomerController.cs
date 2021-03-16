@@ -14,7 +14,7 @@ namespace GRMVC.Controllers
     {
         private IGRBiz _GRBiz;
         private IMapper _mapper;
-    public CustomerController(IGRBiz GRBiz, IMapper mapper)
+        public CustomerController(IGRBiz GRBiz, IMapper mapper)
         {
             _GRBiz = GRBiz;
             _mapper = mapper;
@@ -30,10 +30,6 @@ namespace GRMVC.Controllers
         }
 
         // GET: CustomerController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
         [HttpGet]
         public ActionResult Create()
         {
@@ -47,7 +43,7 @@ namespace GRMVC.Controllers
             {
                 try
                 {
-                    Customer newCustomerModel = new Customer(); 
+                    Customer newCustomerModel = new Customer();
                     newCustomerModel = _GRBiz.AddCustomer(_mapper.cast2Customer(newCustomer));
                     _GRBiz.newCart(newCustomerModel.ID);
                     return RedirectToAction(nameof(Homepage));
@@ -89,26 +85,15 @@ namespace GRMVC.Controllers
         {
             return View(_mapper.cast2CustomerCRVM(_GRBiz.GetCustomerByEmail(HttpContext.Session.GetString("CustomerEmail"))));
         }
-
-        // GET: CustomerController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult OrderHistory()
         {
-            return View();
+            return View(_GRBiz.GetOrdersByID((int)HttpContext.Session.GetInt32("CustomerID"))
+                .Select(x=>_mapper.cast2OrderCRVM(x)).ToList());
         }
-
-        // POST: CustomerController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Details(int ID)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return View(_GRBiz.GetOrderProductsByID(ID).Select(x=>_mapper.cast2OrderProductCRVM(x)).ToList());
+            //_mapper.cast2RecordCRVM(_GRBiz.SearchRecordByName(name))
         }
     }
 }

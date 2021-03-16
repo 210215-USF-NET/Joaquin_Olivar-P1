@@ -8,6 +8,7 @@ namespace GRMVC.Models
 {
     public class Mapper : IMapper
     {
+        //Record methods
         public RecordIndexVM cast2RecordIndexVM(Record record2cast)
         {
             //Record mapper methods
@@ -71,7 +72,7 @@ namespace GRMVC.Models
                 ZipCode = customer2bcast.ZipCode
             };
         }
-
+        //Cart & Cart Product methods
         public CartCheckoutVM cast2CartCheckoutVM(CartProduct cartproduct2cast)
         {
             return new CartCheckoutVM
@@ -93,5 +94,24 @@ namespace GRMVC.Models
                 RecQuan = ccvm2cast.RecQuan
             };
         }
+        public OrderCRVM cast2OrderCRVM(Order order2cast)
+        {
+            return new OrderCRVM
+            {
+                ID = order2cast.ID,
+                OrDate = order2cast.OrDate,
+                TotalCost = order2cast.TotalCost
+            };
+        }
+        public OrderProductCRVM cast2OrderProductCRVM(OrderProduct orderprod2cast)
+        {
+            return new OrderProductCRVM
+            {
+                ID = orderprod2cast.ID,
+                RecID = orderprod2cast.RecID,
+                RecQuan = orderprod2cast.RecQuan,
+            };
+        }
+
     }
 }
