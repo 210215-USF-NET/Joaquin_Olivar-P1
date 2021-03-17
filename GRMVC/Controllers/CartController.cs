@@ -54,14 +54,11 @@ namespace GRMVC.Controllers
                 try
                 {
                     List<CartProduct> cpList = _GRBiz.GetCartProductsByCartID((int)HttpContext.Session.GetInt32("CartID"));
-                    List<CartCheckoutVM> DaCartt = new List<CartCheckoutVM>();
                     foreach (CartProduct cp in cpList)
                     {
                         Record cpR = _GRBiz.SearchRecordByID(cp.RecID);
                         DaCart.Add(_mapper.cast2CartCheckoutVM(cp, cpR));
                     }
-                    /* DaCart = _GRBiz.GetCartProductsByCartID((int)HttpContext.Session.GetInt32("CartID"))
-                         .Select(x => _mapper.cast2CartCheckoutVM(x)).ToList();  //Gets cart inventory */
                      decimal Total = 0;
                      foreach (CartCheckoutVM item in DaCart)
                      {

@@ -64,6 +64,8 @@
             <td>
                 @Html.ActionLink("Details", "Details", new { name = item.RecordName }) |
                 @Html.ActionLink("Add to Cart", "Add2Cart", "Cart", new { RecID = item.ID, Quan = 1, CartID = Context.Session.GetInt32("CartID") }) |
+                @Html.ActionLink("Add to Philly Inventory", "Add2Philly", "Location", new { RecID = item.ID, Quan = 1 }) |
+                @Html.ActionLink("Add to NYCC Inventory", "Add2NYC", "Location", new { RecID = item.ID, Quan = 1 }) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>

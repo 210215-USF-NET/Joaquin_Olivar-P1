@@ -81,7 +81,7 @@ namespace GRDL
             modelBuilder.Entity<LocationProduct>()
                 .HasOne(lp => lp.Record)
                 .WithMany(r => r.LocationProducts)
-                .HasForeignKey(lp => lp.LocID);
+                .HasForeignKey(lp => lp.RecID);
             //Order ovverrides
             modelBuilder.Entity<OrderProduct>()
                 .HasKey(op => new { op.OrdID, op.RecID });

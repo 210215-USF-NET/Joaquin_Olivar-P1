@@ -3,15 +3,17 @@ using System;
 using GRDL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace GRDL.Migrations
 {
     [DbContext(typeof(GRDBContext))]
-    partial class GRDBContextModelSnapshot : ModelSnapshot
+    [Migration("20210317034840_FixedLPRefError")]
+    partial class FixedLPRefError
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

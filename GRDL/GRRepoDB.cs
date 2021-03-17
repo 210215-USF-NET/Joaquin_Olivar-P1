@@ -135,6 +135,8 @@ namespace GRDL
             newlocalprod.LocID = localID;
             newlocalprod.RecID = RecID;
             newlocalprod.RecQuan = RecQuan;
+            _context.LocationProducts.Add(newlocalprod);
+            _context.SaveChanges();
             return newlocalprod;
         }
         List<LocationProduct> IGRRepo.GetLocationProducts(int localID)
@@ -144,7 +146,7 @@ namespace GRDL
  
         Location IGRRepo.GetThisLocation(int localID)
         {
-            throw new NotImplementedException();
+            return _context.Locations.AsNoTracking().Where(x => x.ID == localID).FirstOrDefault();
         }
     }
 }
