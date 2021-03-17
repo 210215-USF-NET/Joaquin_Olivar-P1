@@ -10,7 +10,7 @@ namespace GRDL
         Record SearchRecordByName(string name);
         Record SearchRecordByID(int RecID);
     //Order & order products methods
-        Order AddOrder(int CartID, int CusID);
+        Order AddOrder(int CartID, int CusID, decimal Total);
         List<Order> GetOrdersByID(int CustomerID);
         OrderProduct AddOrderProduct(int OrdID, int RecID, int RecQuan);
         List<OrderProduct> GetOrderProductsByID(int OrderID);

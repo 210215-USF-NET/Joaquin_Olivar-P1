@@ -9,7 +9,7 @@
 <table class="table">
     <thead>
         <tr>
-           
+
             <th>
                 @Html.DisplayNameFor(model => model.LocalID)
             </th>
@@ -23,22 +23,32 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-           
-            <td>
-                @Html.DisplayFor(modelItem => item.LocalID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalCost)
-            </td>
-            <td>
-                @Html.ActionLink("Details", "Details", new { ID = item.ID })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.LocalID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalCost)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { ID = item.ID })
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+<form>
+    <div>
+        Sort:
+        <button type="submit" name="sort" value="0" class="btn btn-secondary" asp-action="OrderHistorySorted">Price (Ascending)</button>
+        <button type="submit" name="sort" value="1" class="btn btn-secondary" asp-action="OrderHistorySorted">Price (Descending)</button>
+        <button type="submit" name="sort" value="2" class="btn btn-secondary" asp-action="OrderHistorySorted">Date (Most Recent)</button>
+        <button type="submit" name="sort" value="3" class="btn btn-secondary" asp-action="OrderHistorySorted">Date (Least Recent)</button>
+    </div>
+</form>

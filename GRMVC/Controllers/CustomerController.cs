@@ -28,8 +28,6 @@ namespace GRMVC.Controllers
         {
             return View("../Home/Index");
         }
-
-        // GET: CustomerController/Details/5
         [HttpGet]
         public ActionResult Create()
         {
@@ -80,7 +78,6 @@ namespace GRMVC.Controllers
             HttpContext.Session.Remove("CartID");
             return Redirect("/");
         }
-
         public ActionResult CustomerInfo()
         {
             return View(_mapper.cast2CustomerCRVM(_GRBiz.GetCustomerByEmail(HttpContext.Session.GetString("CustomerEmail"))));
@@ -92,7 +89,7 @@ namespace GRMVC.Controllers
         }
         public ActionResult Details(int ID)
         {
-             List<OrderProduct> opList = _GRBiz.GetOrderProductsByID(ID);
+            List<OrderProduct> opList = _GRBiz.GetOrderProductsByID(ID);
             List<OrderProductCRVM> opvmList = new List<OrderProductCRVM>();
             foreach (OrderProduct op in opList)
             {
@@ -101,5 +98,29 @@ namespace GRMVC.Controllers
             }
             return View(opvmList);
         }
+        public ActionResult OrderHistorySorted(int sort)
+        {
+            List<OrderCRVM> oList = _GRBiz.GetOrdersByID((int)HttpContext.Session.GetInt32("CustomerID"))
+                   .Select(x => _mapper.cast2OrderCRVM(x)).ToList();
+            switch (sort)
+            {
+                case 0:
+                    oList = oList.OrderBy(x => x.TotalCost).ToList();
+                    break;
+                case 1:
+                    oList = oList.OrderBy(x => x.TotalCost).ToList();
+                    oList.Reverse();
+                    break;
+                case 2:
+                    oList = oList.OrderBy(x => x.OrDate).ToList();
+                    break;
+                case 3:
+                    oList = oList.OrderBy(x => x.OrDate).ToList();
+                    oList.Reverse();
+                    break;
+            }
+            return View(oList);
+        }
     }
 }
+    

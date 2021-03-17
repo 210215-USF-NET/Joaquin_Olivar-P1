@@ -28,9 +28,9 @@ namespace GRBL
                 return _repo.SearchRecordByID(RecID);
             }
         //Order & Order Products methods
-            public Order AddOrder(int CartID, int CusID)
+            public Order AddOrder(int CartID, int CusID, decimal Total)
             {
-                return _repo.AddOrder(CartID, CusID);
+                return _repo.AddOrder(CartID, CusID, Total);
             }
             public List<Order> GetOrdersByID(int CustomerID)
             {

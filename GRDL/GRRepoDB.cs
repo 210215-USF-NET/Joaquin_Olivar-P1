@@ -33,12 +33,13 @@ namespace GRDL
             return _context.Records.AsNoTracking().FirstOrDefault(record => record.ID == RecID);
         }
      //Order & order products methods
-        public Order AddOrder(int CartID, int CusID)
+        public Order AddOrder(int CartID, int CusID, Decimal Total)
         {
             Order finalOrder = new Order();
             finalOrder.CartID = CartID;
             finalOrder.CusID = CusID;
             finalOrder.OrDate = DateTime.Now;
+            finalOrder.TotalCost = Total;
             _context.Orders.Add(finalOrder);
             _context.SaveChanges();
             return finalOrder;

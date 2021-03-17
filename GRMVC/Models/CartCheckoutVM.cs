@@ -30,7 +30,7 @@ namespace GRMVC.Models
         [DisplayName("Format")]
         public Format FormatType { get; set; }
         [Range(1, 9999.99, ErrorMessage = "Prices can't be negative.")]
-        public decimal Price { get; set; }
+        public Decimal Price { get; set; }
        
     }
 }
