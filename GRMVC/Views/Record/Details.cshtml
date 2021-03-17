@@ -48,7 +48,6 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { name = Model.RecordName }) |
     @Html.ActionLink("Add to Cart", "Add2Cart", "Cart", new { RecID = Model.ID, Quan = 1, CartID = Context.Session.GetInt32("CartID") }) |
     <a asp-action="Index">Back to List</a>
 </div>

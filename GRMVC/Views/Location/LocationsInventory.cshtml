@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<GRMVC.Models.LocationInvCRVM>
-
+@using Microsoft.AspNetCore.Http;
 @{
     ViewData["Title"] = "Inventory";
 }
@@ -43,44 +43,44 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RecID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LocID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RecQuan)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RecordName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GenreType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DaCondition)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DaFormat)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Artist)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RecID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LocID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RecQuan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RecordName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GenreType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DaCondition)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DaFormat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Artist)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", "Record", new { name = item.RecordName }) |             
+                    @Html.ActionLink("Add to Cart", "Add2Cart", "Cart", new { RecID = item.ID, Quan = 1, CartID = Context.Session.GetInt32("CartID")}) |
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

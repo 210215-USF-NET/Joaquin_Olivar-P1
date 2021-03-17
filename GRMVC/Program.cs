@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Serilog;
 
 namespace GRMVC
 {
@@ -13,6 +14,26 @@ namespace GRMVC
     {
         public static void Main(string[] args)
         {
+            Log.Logger = new LoggerConfiguration()
+                  .Enrich.FromLogContext()
+                  .WriteTo.File("../logs/Logs.json",
+                      rollingInterval: RollingInterval.Day,
+                      rollOnFileSizeLimit: true)
+                  .CreateLogger();
+            try
+            {
+                Log.Information("Starting App...");
+                CreateHostBuilder(args).Build().Run();
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "The application failed to start");
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
+
             CreateHostBuilder(args).Build().Run();
         }
 

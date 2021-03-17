@@ -7,6 +7,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using GRBL;
 using GRModels;
+using Serilog;
+using Microsoft.Extensions.Logging;
 
 namespace GRMVC.Controllers
 {
@@ -14,10 +16,12 @@ namespace GRMVC.Controllers
     {
         private IGRBiz _GRBiz;
         private IMapper _mapper;
-        public CustomerController(IGRBiz GRBiz, IMapper mapper)
+        private readonly ILogger<HomeController> _logger;
+        public CustomerController(IGRBiz GRBiz, IMapper mapper, ILogger<HomeController> logger)
         {
             _GRBiz = GRBiz;
             _mapper = mapper;
+            _logger = logger;
         }
         // GET: CustomerController
         public ActionResult LoginPage()
@@ -44,6 +48,7 @@ namespace GRMVC.Controllers
                     Customer newCustomerModel = new Customer();
                     newCustomerModel = _GRBiz.AddCustomer(_mapper.cast2Customer(newCustomer));
                     _GRBiz.newCart(newCustomerModel.ID);
+                    _logger.LogInformation($"New customer: Customer: {newCustomer.FirstName} {newCustomer.LastName} w/ Email: {newCustomer.Email}");
                     return RedirectToAction(nameof(Homepage));
                 }
                 catch

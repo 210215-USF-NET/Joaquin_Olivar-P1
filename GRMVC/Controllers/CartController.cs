@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using GRBL;
 using GRMVC.Models;
 using GRModels;
+using Serilog;
+using Microsoft.Extensions.Logging;
 
 namespace GRMVC.Controllers
 {
@@ -14,10 +16,12 @@ namespace GRMVC.Controllers
     {
         private IGRBiz _GRBiz;
         private IMapper _mapper;
-        public CartController(IGRBiz GRBiz, IMapper mapper)
+        private readonly ILogger<HomeController> _logger;
+        public CartController(IGRBiz GRBiz, IMapper mapper, ILogger<HomeController> logger)
         {
             _GRBiz = GRBiz;
             _mapper = mapper;
+            _logger = logger;
         }
 
         // GET: CartController
@@ -73,6 +77,7 @@ namespace GRMVC.Controllers
                         _GRBiz.AddOrderProduct(finalorder.ID, item.RecID, item.RecQuan);
                         _GRBiz.PurgeCartProduct(_mapper.cast2CartProduct(item));
                     }
+                    _logger.LogInformation($"Order purchased: {finalorder.CusID} bought {finalorder.ID} w/ prie {finalorder.TotalCost}");
                     return View("OrderConfirm");
                 }
                 catch
