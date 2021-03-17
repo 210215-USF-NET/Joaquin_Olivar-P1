@@ -7,7 +7,6 @@
 </style>
 <h1> Choose a Location</h1>
 <img src="https://www.visitphilly.com/wp-content/uploads/2018/02/Philadelphia-Pass-Loews-Skyline-C.Smyth2200x1237.jpg" />
-<button type="submit" name="localID" value="0" class="btn btn-secondary" asp-action="LocationsInventory">Philadelphia</button>
 @Html.ActionLink("Philadelphia", "LocationsInventory", "Location", new { localID = 0 })
 <img src="https://s23527.pcdn.co/wp-content/uploads/2017/11/Screenshot-2017-11-15-15.21.02.jpg.optimal.jpg" />
-<button type="submit" name="localID" value="1" class="btn btn-secondary" asp-action="LocationsInventory">New York City</button>
+@Html.ActionLink("New York City", "LocationsInventory", "Location", new { localID = 1 })

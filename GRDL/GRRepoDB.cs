@@ -141,7 +141,7 @@ namespace GRDL
         }
         List<LocationProduct> IGRRepo.GetLocationProducts(int localID)
         {
-            return _context.LocationProducts.AsNoTracking().ToList();
+            return _context.LocationProducts.AsNoTracking().Where(x=>x.LocID==localID).ToList();
         }
  
         Location IGRRepo.GetThisLocation(int localID)
