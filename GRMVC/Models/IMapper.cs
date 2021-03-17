@@ -19,6 +19,7 @@ namespace GRMVC.Models
         //Order Methods
         OrderCRVM cast2OrderCRVM(Order order2cast);
         OrderProductCRVM cast2OrderProductCRVM(OrderProduct orderprod2cast, Record record2cast); //Order product + Record info
+        LocationInvCRVM cast2LocationInvCRVM(LocationProduct localprod2cast, Record record2cast);
         
     }
 }

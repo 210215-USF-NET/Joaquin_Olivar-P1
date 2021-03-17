@@ -127,6 +127,23 @@ namespace GRMVC.Models
                 Price = record2cast.Price
             };
         }
+        public LocationInvCRVM cast2LocationInvCRVM(LocationProduct localprod2cast, Record record2cast)
+        {
+            return new LocationInvCRVM
+            {
+                ID = localprod2cast.ID,
+                LocID = localprod2cast.LocID,
+                RecID = localprod2cast.RecID,
+                RecQuan = localprod2cast.RecQuan,
+                //Actual Record Info
+                RecordName = record2cast.RecordName,
+                Artist = record2cast.Artist,
+                GenreType = record2cast.GenreType,
+                DaFormat = record2cast.DaFormat,
+                DaCondition = record2cast.DaCondition,
+                Price = record2cast.Price
+            };
+        }
 
     }
 }

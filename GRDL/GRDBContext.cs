@@ -106,6 +106,18 @@ namespace GRDL
                     Price = 249.99M
                 }
                 ) ;
+            modelBuilder.Entity<Location>().HasData(
+                new Location
+                {
+                    ID = 100,
+                    localName = "Philadelphia"
+                },
+                new Location
+                {
+                    ID = 200,
+                    localName = "New York City"
+                }
+                );
         } 
     }
 }

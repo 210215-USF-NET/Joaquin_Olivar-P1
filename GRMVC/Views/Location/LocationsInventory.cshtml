@@ -1,0 +1,86 @@
+﻿@model IEnumerable<GRMVC.Models.LocationInvCRVM>
+
+@{
+    ViewData["Title"] = "Inventory";
+}
+
+<h1>Location Inventory</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LocID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecQuan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecordName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GenreType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DaCondition)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DaFormat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Artist)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecQuan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecordName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GenreType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DaCondition)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DaFormat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Artist)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

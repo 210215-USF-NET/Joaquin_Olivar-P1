@@ -94,16 +94,16 @@ namespace GRBL
                 {
                     return _repo.PurgeCartProduct(cartProductsforDeletion);
                 }
-        //Inventory methods
-            public List<LocationProduct> GetInventory(int localID)
+            //Location and location product methods
+            public List<LocationProduct> GetLocationProducts(int localID)
             {
-                return _repo.GetInventory(localID);
+                return _repo.GetLocationProducts(localID);
             }
-            public void AddToInventory(int localID, int RecID, int RecQuan)
+            public LocationProduct AddLocationProduct(int localID, int RecID, int RecQuan)
             {
-                _repo.AddToInventory(localID, RecID, RecQuan);
+                return _repo.AddLocationProduct(localID, RecID, RecQuan);
             }
-        //Location methods
+
         public Location GetThisLocation(int localID)
         {
             return _repo.GetThisLocation(localID);

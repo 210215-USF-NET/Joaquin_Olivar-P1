@@ -28,10 +28,10 @@ namespace GRDL
         CartProduct GetCartProductByID(int ID);
         List<CartProduct> GetCartProductsByCartID(int ID);
         CartProduct PurgeCartProduct(CartProduct cartProductsforDeletion);
-    //Inventory methods
-        List<LocationProduct> GetInventory(int localID);
-        void AddToInventory(int localID, int RecID, int RecQuan);
-    //Locaton methods
+        //Location & Location Product methods
+        LocationProduct AddLocationProduct(int localID, int RecID, int RecQuan);
+        List<LocationProduct> GetLocationProducts(int localID);
+        
         Location GetThisLocation(int localID);
 
     }

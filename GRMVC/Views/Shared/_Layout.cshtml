@@ -27,6 +27,9 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Record" asp-action="Index">Records</a>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Location" asp-action="Locations">Locations</a>
+                        </li>
                     </ul>
                     <ul class=" navbar-nav flex-grow-1" style="justify-content: flex-end">
                         @if (Context.Session.GetString("CustomerEmail") == null)

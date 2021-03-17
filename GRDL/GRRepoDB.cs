@@ -128,16 +128,20 @@ namespace GRDL
             return cartProductsforDeletion;
 
         }
-     //Inventory methods
-        List<LocationProduct> IGRRepo.GetInventory(int localID)
+        //Location & Location product methods
+        LocationProduct IGRRepo.AddLocationProduct(int localID, int RecID, int RecQuan)
         {
-            throw new NotImplementedException();
+            LocationProduct newlocalprod = new LocationProduct();
+            newlocalprod.LocID = localID;
+            newlocalprod.RecID = RecID;
+            newlocalprod.RecQuan = RecQuan;
+            return newlocalprod;
         }
-        void IGRRepo.AddToInventory(int localID, int RecID, int RecQuan)
+        List<LocationProduct> IGRRepo.GetLocationProducts(int localID)
         {
-            throw new NotImplementedException();
+            return _context.LocationProducts.AsNoTracking().ToList();
         }
-     //Locaton methods
+ 
         Location IGRRepo.GetThisLocation(int localID)
         {
             throw new NotImplementedException();
