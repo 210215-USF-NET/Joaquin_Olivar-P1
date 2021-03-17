@@ -72,7 +72,7 @@
                 </td>
                 <td>
                     @Html.ActionLink("Details", "Details", "Record", new { name = item.RecordName }) |             
-                    @Html.ActionLink("Add to Cart", "Add2Cart", "Cart", new { RecID = item.ID, Quan = 1, CartID = Context.Session.GetInt32("CartID")}) |
+                    @Html.ActionLink("Add to Cart", "Add2Cart", "Cart", new { RecID = item.RecID, Quan = 1, CartID = Context.Session.GetInt32("CartID")}) |
                 </td>
             </tr>
         }

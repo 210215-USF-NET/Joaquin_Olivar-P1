@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GRBL", "GRBL\GRBL.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GRMVC", "GRMVC\GRMVC.csproj", "{CF972FD9-DBD1-48CC-B0AA-4DF6FCA3EADC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GRTests", "GRTests\GRTests.csproj", "{60353EB7-DD6B-4168-A527-B791A0DA7354}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,18 @@ Global
 		{CF972FD9-DBD1-48CC-B0AA-4DF6FCA3EADC}.Release|x64.Build.0 = Release|Any CPU
 		{CF972FD9-DBD1-48CC-B0AA-4DF6FCA3EADC}.Release|x86.ActiveCfg = Release|Any CPU
 		{CF972FD9-DBD1-48CC-B0AA-4DF6FCA3EADC}.Release|x86.Build.0 = Release|Any CPU
+		{60353EB7-DD6B-4168-A527-B791A0DA7354}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60353EB7-DD6B-4168-A527-B791A0DA7354}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60353EB7-DD6B-4168-A527-B791A0DA7354}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{60353EB7-DD6B-4168-A527-B791A0DA7354}.Debug|x64.Build.0 = Debug|Any CPU
+		{60353EB7-DD6B-4168-A527-B791A0DA7354}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{60353EB7-DD6B-4168-A527-B791A0DA7354}.Debug|x86.Build.0 = Debug|Any CPU
+		{60353EB7-DD6B-4168-A527-B791A0DA7354}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60353EB7-DD6B-4168-A527-B791A0DA7354}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60353EB7-DD6B-4168-A527-B791A0DA7354}.Release|x64.ActiveCfg = Release|Any CPU
+		{60353EB7-DD6B-4168-A527-B791A0DA7354}.Release|x64.Build.0 = Release|Any CPU
+		{60353EB7-DD6B-4168-A527-B791A0DA7354}.Release|x86.ActiveCfg = Release|Any CPU
+		{60353EB7-DD6B-4168-A527-B791A0DA7354}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
